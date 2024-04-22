@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='project.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='common.css') }}">
+    <title>project</title>
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('skill') }}">Skills</a>
+        <a href="{{ url_for('project') }}">Project</a>
+        <a href="{{ url_for('contact') }}">Contact</a> {% if 'user_id' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a> {% else %}
+        <a href="{{ url_for('login') }}">Login</a> {% endif %}
+    </nav>
+
+
+    <div id="project" class="nav-content">
+        <div class="height-80"></div>
+        <div class="title">Project</div>
+        <div class="detail">
+            “Interested in the moments that led to my change of journey? Curious to see the small trees I’ve planted in this new path? Here they are. Feel free to drop by and witness their growth.”
+        </div>
+
+        <div class="height-40"></div>
+
+        <div class="container">
+            <div class="box">
+                <div class="img-box">
+                    <img src="../static/project1.jpg" alt="" />
+                </div>
+                <div class="text-box">
+                    <div>
+                        <h2>Hospital Internship</h2>
+                        <p>
+                            I took a 3-month internship at the Guangdong Provincial People's Hospital, where I found a fascination with analytical process while writing psychological counseling reports
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img src="../static/project2.png" alt="" />
+                </div>
+                <div class="text-box">
+                    <div>
+                        <h2>First Program</h2>
+                        <p>
+                            My journey into programming all started with an idea of creating a pop-up window for external encouragement. As I learned Java,my fascination with programming logic gradually grew.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="img-box">
+                    <img src="../static/project3.png" alt="" />
+                </div>
+                <div class="text-box">
+                    <div>
+                        <h2>Three static pages </h2>
+                        <p>
+                            This is my first programming assignment for the CIT project. The logic is quite similar to creating a pop-up window, but in HTML and CSS language. I can't wait to add more interactive elements to my next project!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const wrapper = document.querySelector('.carousel-wrapper');
+            const items = document.querySelectorAll('.box');
+            const totalItems = items.length;
+
+            if (index < 0) {
+                currentIndex = totalItems - 3;
+            } else if (index > totalItems - 3) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+
+            const transformValue = -currentIndex * 100 / 3 + '%';
+            wrapper.style.transform = 'translateX(' + transformValue + ')';
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        // 自动播放
+        setInterval(function() {
+            nextSlide();
+        }, 3000);
+    </script>
+</body>
+
+</html>

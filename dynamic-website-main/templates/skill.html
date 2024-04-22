@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='common.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='skill.css') }}">
+    <title>Skill</title>
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('skill') }}">Skills</a>
+        <a href="{{ url_for('project') }}">Project</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <div id="skills" class="nav-content">
+        <div class="height-80"></div>
+        <div class="title">Stack</div>
+
+        <div class="description">
+            Over the studies in Cardiff, I absorb as much course knowledge as I can, while also trying to explore more outside of class. Those are the stacks I’ve got in hand, with more to deliver!
+        </div>
+
+        <div class="gallery-wrap">
+            <button class="btn prev" id="backBtn">‹</button>
+            <div class="gallery" id="scrollCont">
+                <div>
+                    <img src="../static/stack1.png" alt="Image 1" />
+                </div>
+                <div>
+                    <img src="../static/stack2.png" alt="Image 2" />
+                </div>
+                <div>
+                    <img src="../static/stack3.png" alt="Image 3" />
+                </div>
+                <div>
+                    <img src="../static/stack4.png" alt="Image 4" />
+                </div>
+                <div>
+                    <img src="../static/stack5.png" alt="Image 5" />
+                </div>
+                <div>
+                    <img src="../static/stack6.png" alt="Image 6" />
+                </div>
+            </div>
+            <button class="btn next" id="nextBtn">›</button>
+        </div>
+    </div>
+
+    <script>
+        let scrollContainer = document.getElementById("scrollCont");
+        let backBtn = document.getElementById("backBtn");
+        let nextBtn = document.getElementById("nextBtn");
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            if (evt.deltaY < 0) {
+                scrollContainer.scrollLeft -= (700 / 3);
+            } else if (evt.deltaY > 0) {
+                scrollContainer.scrollLeft += (700 / 3);
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            scrollContainer.style.scrollBehavior = 'smooth';
+            scrollContainer.scrollLeft += (700 / 3);
+        });
+
+        backBtn.addEventListener("click", () => {
+            scrollContainer.style.scrollBehavior = 'smooth';
+            scrollContainer.scrollLeft -= (700 / 3);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='index.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='common.css') }}">
+    <title>About me</title>
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('skill') }}">Skills</a>
+        <a href="{{ url_for('project') }}">Project</a>
+        <a href="{{ url_for('contact') }}">Contact</a> {% if 'user_id' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <span class="welcome"> Welcome,{{user_id}} </span> {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <span class="welcome"> Welcome,{{visitor_id}} </span> {% endif %}
+
+    </nav>
+    <div id="home" class="nav-content">
+        <div class="home">
+            <div class="home-left"></div>
+            <div class="home-right">
+                <div class="time">Linglin Yu 2024-1-1 20:07</div>
+                <div class="line-h-40">Hi, I am Linglin.</div>
+                <div class="line-h-40">Welcome to my portfolio!</div>
+                <div class="line-h-40">Here’s a piece of knowledge about me:</div>
+                <ul class="list">
+                    <li>Pursued a BSc degree in Applied Psychology at GZUCM</li>
+                    <li>
+                        I am Currently studying in the MSc Computing and IT program at Cardiff University
+                    </li>
+                    <li>Working on the path to becoming a web developer.</li>
+                </ul>
+                <div class="height-200"></div>
+                <div class="diviver"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

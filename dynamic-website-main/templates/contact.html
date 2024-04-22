@@ -1,0 +1,108 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='contact.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',filename='common.css') }}">
+    <title>Comments</title>
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('skill') }}">Skills</a>
+        <a href="{{ url_for('project') }}">Project</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+    <div id="contact" class="nav-content">
+        <div class="height-80"></div>
+        <div class=flash>
+            {% with messages = get_flashed_messages(with_categories=true) %}               {% if messages %}                   {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}                       </div>
+            {% endfor %}               {% endif %}           {% endwith %}
+        </div>
+        <div class="contact-form">
+            <div class="title">Get in touch</div>
+            <div class="description">"Care to share a piece of your mind?"</div>
+            <form action="/submit" method="post">
+                <div class="form-item-select">
+                    <select name="theme" id="themeSelect" onchange="toggleCustomInput()" required>
+            <option value="" disabled selected hidden>
+              Pick an item you'd like to answer or do
+            </option>
+            <option value="message">Send me a message</option>
+            <option value="thought">A penny for your thoughts</option>
+            <option value="work">--Work--</option>
+            <option value="skill">
+              1.The skill you value most in the work? How to develop?
+            </option>
+            <option value="perspective">
+              2.The most adorable part of your job?
+            </option>
+            <option value="challenge">
+              3.Could you tell me an problem you nailed in you work?
+            </option>
+            <option value="programming">--Programming--</option>
+            <option value="ending">
+              1.Is there a relative endpoint in the learning process of
+              programming?
+            </option>
+            <option value="level">
+              2.Is it necessary to memorize the syntax for each project during
+              learning?
+            </option>
+            <option value="choice">
+              3.How do we choose projects that are suitable for our practice?
+            </option>
+            <option value="life">--Life--</option>
+            <option value="feeling">1.How do you feel today?</option>
+            <option value="movie/book">
+              2.Introduce one of your favorite movie/book
+            </option>
+            <option value="game">
+              3.The funnies game you have ever played!
+            </option>
+            <option value="place">
+              4.An impressive place and how it appeals to you
+            </option>
+            <option value="happy">5.Your secret to staying happy</option>
+            <option value="sad">
+              6.Your method to handle negative emotions such as regret, guilt,
+              and sadness
+            </option>
+          </select>
+                    <div class="footer-icon">
+                        <a class="contact1 icon" href="https://www.google.com/" target="_blank"></a>
+                        <a class="contact2 icon" href="https://github.com/" target="_blank"></a>
+                        <a class="contact3 icon" href="https://www.instagram.com/" target="_blank"></a>
+                    </div>
+                </div>
+                <div class="flex">
+                    <input type="text" name="title" placeholder="title" class="contract-title-input" />
+                    <input type="email" id="email" name="email" placeholder="e-mail(optional)" />
+                </div>
+                <textarea placeholder="Text..." rows="4" required name="text"></textarea
+        ><br />
+
+        <input type="checkbox" name="is_public" />
+        <label for="is_public" class="form-label">Display Below</label>
+
+        <button type="submit" class="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="comment-container">
+      {% for comment in comments %}
+      <div class="comment">
+        <div class="comment-title">{{ comment.title }}</div>
+        <p class="content">{{ comment.text }}</p>
+        <div class="info">
+          {% if 'user_id' in session %} {{ user_id }} {% else %} {{ visitor_id
+          }} {% endif %} {{ current_date }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>

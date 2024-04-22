@@ -1,0 +1,99 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    float: right;
+    margin-right: 100px;
+}
+
+.nav-content .home {
+    display: flex;
+    background-color: #f2f2f2;
+    width: 800px;
+    padding: 10px 20px;
+}
+
+.nav-content {
+    position: relative;
+    text-align: center;
+}
+
+.home-left {
+    width: 100px;
+    height: 100px;
+    background: url(../static/pic.png) no-repeat top;
+    background-size: 100% auto;
+}
+
+.time {
+    font-size: 14px;
+    line-height: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999;
+}
+
+.time::before {
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: url(../static/index2.png) no-repeat center;
+    background-size: 100% auto;
+    position: relative;
+    top: 3px;
+}
+
+.home-right {
+    background-color: #fff;
+    padding: 10px 40px;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.line-h-40 {
+    line-height: 40px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    width: 100%;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+}
+
+li::before {
+    content: "•";
+    color: black;
+    margin-right: 8px;
+    position: absolute;
+    left: 0;
+}
+
+.list {
+    margin-top: 20px;
+}
+
+.list li {
+    line-height: 28px;
+}
+
+.height-200 {
+    height: 80px;
+    width: 100%;
+}
+
+.diviver {
+    height: 1px;
+    width: 100%;
+    background-color: #999;
+}

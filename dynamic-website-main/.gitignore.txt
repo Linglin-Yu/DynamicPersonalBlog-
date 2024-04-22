@@ -1,0 +1,7 @@
+35 B
+*.pyc
+venv
+x*
+*.db
+.DS_Store
+logs*
